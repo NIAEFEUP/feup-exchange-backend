@@ -3,7 +3,7 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
-from .views import TestServiceView
+from feup_exchange_backend.views.views import TestServiceView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
