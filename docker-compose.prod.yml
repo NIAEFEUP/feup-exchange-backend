@@ -24,7 +24,7 @@ services:
   django:
     build:
       context: ./django
-      dockerfile: Dockerfile.prod
+      dockerfile: dockerfile_prod
     container_name: feupexchange_django
     command: gunicorn feup_exchange_backend.wsgi:application --bind 0.0.0.0:8000
     volumes:
@@ -38,7 +38,9 @@ services:
       - django/.env.prod
 
   nginx:
-    build: ./nginx
+    build:
+      context: ./nginx
+      dockerfile: dockerfile_nginx
     container_name: feupexchange_nginx
     volumes:
       - static_volume:/home/feupexchange/django/staticfiles

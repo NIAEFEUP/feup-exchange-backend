@@ -22,7 +22,7 @@ COPY ./entrypoint.sh /usr/src/django/entrypoint.sh
 COPY . /usr/src/django/
 
 # run entrypoint.sh
-ENTRYPOINT ["/usr/src/django/entrypoint.sh"]
+ENTRYPOINT ["sh","/usr/src/django/entrypoint.sh"]
 
 # for security reasons the user that will run
 # our software will be user and not root

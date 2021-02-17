@@ -22,7 +22,9 @@ services:
       - postgresql
 
   django:
-    build: ./django
+    build:
+      context: ./django
+      dockerfile: dockerfile_dev
     container_name: feupexchange_django
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
