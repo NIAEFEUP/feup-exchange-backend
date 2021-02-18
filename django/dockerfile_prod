@@ -61,4 +61,4 @@ COPY . $APP_HOME
 #USER feupexchange
 
 # run entrypoint.prod.sh
-ENTRYPOINT ["/home/feupexchange/django/entrypoint.prod.sh"]
+ENTRYPOINT ["sh","/home/feupexchange/django/entrypoint.prod.sh"]
