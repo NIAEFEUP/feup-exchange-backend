@@ -8,7 +8,8 @@ from .views import TestServiceView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),
-    path('', TestServiceView.as_view(), name="test")
+    path('', TestServiceView.as_view(), name="test"),
+    path('mail/', include('mail.urls'))
 ]
 
 if bool(settings.DEBUG):
