@@ -1,0 +1,42 @@
+# pull official base image
+FROM python:3.7-buster
+
+# create directory for the app user
+RUN mkdir -p /home/feupexchange
+
+# create the app user
+# RUN addgroup --system feupexchange && adduser --system feupexchange --ingroup feupexchange
+
+# create the appropriate directories
+ENV HOME=/home/feupexchange
+ENV APP_HOME=/home/feupexchange/django
+RUN mkdir $APP_HOME
+RUN mkdir $APP_HOME/staticfiles
+RUN mkdir $APP_HOME/mediafiles
+WORKDIR $APP_HOME
+
+# set environment variables
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
+# install dependencies
+COPY ./requirements.txt $APP_HOME
+RUN apt-get update && apt-get install -y libhdf5-serial-dev netcdf-bin libnetcdf-dev
+RUN pip install -r requirements.txt
+
+# copy entrypoint-prod.sh
+COPY ./entrypoint.prod.sh $APP_HOME
+
+# copy project
+COPY . $APP_HOME
+
+# TODO: Before passing to production, use this user instead of root
+# chown all the files to the app user
+# RUN chown -R feupexchange:feupexchange $APP_HOME
+
+# change to the app user
+# USER feupexchange
+
+# run entrypoint.prod.sh
+ENTRYPOINT ["sh","/home/feupexchange/django/entrypoint.prod.sh"]
+
