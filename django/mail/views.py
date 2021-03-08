@@ -17,12 +17,13 @@ class EmailStudentView(APIView):
         """
          
         receivers = ['kikojpgoncalves@gmail.com']
+        
         subject = "Tema"
         body = """Boa tarde a todos,
 
 O processo de escolha de horarios...
 
-Assim sendo...
+Assim sendo, criámos o feup-exchange...
 
 Desejamos a todos um bom semestre, 
 NIAEFEUP."""
