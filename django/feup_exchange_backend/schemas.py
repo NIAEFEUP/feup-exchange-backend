@@ -9,7 +9,7 @@ TestServiceSuccessResponse = \
             properties={
                 "message": openapi.Response(
                     type=openapi.TYPE_STRING,
-                    enum=["Yep, it\'s working!"],
+                    enum=["Yep, it's working!"],
                     description="Message indicating that the service is "
                                 "available and functioning properly."
                 ),
