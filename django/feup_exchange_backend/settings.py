@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [
@@ -125,6 +126,21 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 MEDIA_URL = "/mediafiles/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "mediafiles")
+
+SWAGGER_SETTINGS = {
+    "DOC_EXPANSION": "none",
+    "HIDE_HOSTNAME": True,
+    "DEFAULT_FILTER_INSPECTORS": ['drf_yasg.inspectors.CoreAPICompatInspector'],
+    "FILTER": False,
+    "SHOW_EXTENSIONS": False,
+    "SECURITY_DEFINITIONS": {
+        'Token': {
+            'type': 'apiKey',
+            'name': 'Authorization',
+            'in': 'header'
+        }
+    }
+}
 
 # -- Renderers
 REST_FRAMEWORK = {
