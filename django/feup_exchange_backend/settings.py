@@ -149,3 +149,11 @@ REST_FRAMEWORK = {
 CORS_ORIGIN_WHITELIST = \
     ('http://localhost:8000',
      'http://127.0.0.1:8000')
+    
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = os.environ.get("EMAIL_HOST",)
+EMAIL_PORT = int(os.environ.get("EMAIL_PORT", default=587))
+EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER",)
+EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD",)
+EMAIL_USE_TLS = True if int(os.environ.get("EMAIL_USE_TLS", default=0)) == 1 else False
+EMAIL_USE_SSL = True if int(os.environ.get("EMAIL_USE_SSL", default=0)) == 1 else False
