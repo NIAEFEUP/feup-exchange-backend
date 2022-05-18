@@ -3,6 +3,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import status
+from rest_framework.authtoken.models import Token
 
 from .serializers import AdminRegistrationSerializer
 
@@ -22,7 +23,8 @@ class AdminView(APIView):
             admin = serializer.save()
             return Response(data={
                 "response": "Succesfully registered a new admin",
-                "email": admin.email
+                "email": admin.email,
+                "token": str(Token.objects.get(user=admin))
             }, status=status.HTTP_200_OK)
 
         return Response(data=serializer.errors)
