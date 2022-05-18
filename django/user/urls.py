@@ -1,7 +1,8 @@
 from django.urls import path
 
-from .views import AdminTestServiceView
+from .views import AdminTestServiceView, AdminView
 
 urlpatterns = [
-    path('', AdminTestServiceView.as_view(), name="admintest")
+    path('', AdminView.as_view(), name="user"),
+    path('test/', AdminTestServiceView.as_view(), name="admintest"),
 ]
